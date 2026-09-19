@@ -1,42 +1,228 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photobooth 360 - Experiencia Visual</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhotoBooth 360 | Experiencia Visual Inmersiva</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Photobooth 360</h1>
-            <p>Captura cada ángulo de tu evento en alta definición y cámara lenta.</p>
-            <a href="#contacto" class="btn">Reservar Fecha</a>
-        </div>
-    </header>
+  <!-- Navegación Adaptativa -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo">PhotoBooth<span>360</span></a>
+      
+      <!-- Control de menú móvil -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle">
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Abrir menú">
+        <span></span>
+      </label>
 
-    <section class="servicios">
-        <h2>¿Qué Incluye el Servicio?</h2>
-        <div class="cards-container">
-            <div class="card">
-                <h3>Video en Cámara Lenta</h3>
-                <p>Efectos de tiempo real para videos dinámicos e impactantes.</p>
-            </div>
-            <div class="card">
-                <h3>Iluminación LED</h3>
-                <p>Aros y barras de luz profesional para una calidad impecable.</p>
-            </div>
-            <div class="card">
-                <h3>Entrega Inmediata</h3>
-                <p>Descarga mediante código QR en cuestión de segundos.</p>
-            </div>
-        </div>
-    </section>
+      <nav class="nav-menu">
+        <ul class="nav-links">
+          <li><a href="#que-es">¿Qué es?</a></li>
+          <li><a href="#destinado">Eventos</a></li>
+          <li><a href="#planes">Planes</a></li>
+          <li><a href="#reservas" class="btn btn-sm">Reservar</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <footer id="contacto">
-        <p>&copy; 2026 Photobooth 360. Todos los derechos reservados.</p>
-    </footer>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-content">
+      <h1>Inmortaliza tu evento con dinamismo en 360°</h1>
+      <p>Producción de video interactivo de alta resolución, efectos dinámicos en tiempo real y descarga inmediata para tus invitados.</p>
+      <div class="hero-actions">
+        <a href="#reservas" class="btn btn-primary">Separa tu fecha</a>
+        <a href="#planes" class="btn btn-secondary">Ver planes</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ¿Qué es? -->
+  <section id="que-es" class="section section-dark">
+    <div class="container">
+      <div class="section-title">
+        <h2>¿Qué es el Photo Booth 360?</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="concept-grid">
+        <div class="concept-card">
+          <h3>Tecnología Giratoria</h3>
+          <p>Brazo motorizado sincronizado que captura planos envolventes en alta definición a velocidad variable.</p>
+        </div>
+        <div class="concept-card">
+          <h3>Procesamiento Inmediato</h3>
+          <p>Renderizado automatizado con efectos de cámara lenta (slow motion), reversa y pistas de audio temáticas.</p>
+        </div>
+        <div class="concept-card">
+          <h3>Descarga Instantánea</h3>
+          <p>Acceso digital mediante código QR o AirDrop directo al dispositivo de cada invitado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Destinatarios -->
+  <section id="destinado" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Ámbitos de Aplicación</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">Versatilidad técnica adaptada a protocolos formales y activaciones comerciales.</p>
+      </div>
+      <div class="events-grid">
+        <article class="event-item">
+          <h4>Eventos Sociales</h4>
+          <p>Bodas, recepciones y graduaciones que exigen distinción estética y registro dinámico.</p>
+        </article>
+        <article class="event-item">
+          <h4>Celebraciones Privadas</h4>
+          <p>Cumpleaños y eventos juveniles enfocados en la difusión de contenido en redes sociales.</p>
+        </article>
+        <article class="event-item">
+          <h4>Eventos Corporativos</h4>
+          <p>Lanzamientos de producto y congresos con personalización de marca e identidad gráfica superpuesta.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Planes y Precios -->
+  <section id="planes" class="section section-dark">
+    <div class="container">
+      <div class="section-title">
+        <h2>Planes de Servicio</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="pricing-grid">
+        
+        <div class="price-card">
+          <div class="card-header">
+            <h3>Plan Básico</h3>
+            <div class="price">$180<span> / 2 Horas</span></div>
+          </div>
+          <ul class="card-features">
+            <li>Plataforma hasta 3-4 personas</li>
+            <li>Videos ilimitados en alta resolución</li>
+            <li>Efectos de velocidad y transiciones</li>
+            <li>Descarga instantánea vía código QR</li>
+            <li>1 Operador técnico calificado</li>
+          </ul>
+          <a href="#reservas" class="btn btn-outline">Seleccionar</a>
+        </div>
+
+        <div class="price-card featured">
+          <div class="card-badge">Más solicitado</div>
+          <div class="card-header">
+            <h3>Plan Estándar</h3>
+            <div class="price">$250<span> / 3 Horas</span></div>
+          </div>
+          <ul class="card-features">
+            <li>Capacidad hasta 4-5 personas</li>
+            <li>Pistas musicales y marco personalizado</li>
+            <li>Iluminación LED profesional perimetral</li>
+            <li>2 Operadores técnicos</li>
+            <li>Galería web posterior al evento</li>
+          </ul>
+          <a href="#reservas" class="btn btn-primary">Seleccionar</a>
+        </div>
+
+        <div class="price-card">
+          <div class="card-header">
+            <h3>Plan Corporativo</h3>
+            <div class="price">$340<span> / 4 Horas</span></div>
+          </div>
+          <ul class="card-features">
+            <li>Capacidad extendida y alto flujo</li>
+            <li>Branding institucional (logotipo integrado)</li>
+            <li>Props y accesorios de ambientación</li>
+            <li>Enlace dedicado de descarga masiva</li>
+            <li>Soporte técnico continuo</li>
+          </ul>
+          <a href="#reservas" class="btn btn-outline">Seleccionar</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulario de Reserva -->
+  <section id="reservas" class="section">
+    <div class="container form-container">
+      <div class="section-title">
+        <h2>Separar Fecha</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">Consulte disponibilidad y garantice la logística de su evento.</p>
+      </div>
+
+      <form class="reservation-form" action="#" method="POST">
+        <div class="form-group">
+          <label for="nombre">Nombre y Apellido</label>
+          <input type="text" id="nombre" name="nombre" required placeholder="Ej. Joel Porras">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Correo Electrónico</label>
+            <input type="email" id="email" name="email" required placeholder="correo@ejemplo.com">
+          </div>
+          <div class="form-group">
+            <label for="telefono">WhatsApp / Celular</label>
+            <input type="tel" id="telefono" name="telefono" required placeholder="0987654321">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fecha">Fecha del Evento</label>
+            <input type="date" id="fecha" name="fecha" required>
+          </div>
+          <div class="form-group">
+            <label for="tipo-evento">Tipo de Evento</label>
+            <select id="tipo-evento" name="tipo-evento" required>
+              <option value="" disabled selected>Seleccione</option>
+              <option value="boda">Boda</option>
+              <option value="quince">Quinceañera</option>
+              <option value="corporativo">Corporativo</option>
+              <option value="graduacion">Graduación</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="plan">Plan Seleccionado</label>
+          <select id="plan" name="plan" required>
+            <option value="" disabled selected>Seleccione el plan</option>
+            <option value="basico">Plan Básico (2 Horas)</option>
+            <option value="estandar">Plan Estándar (3 Horas)</option>
+            <option value="corporativo">Plan Corporativo (4 Horas)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="mensaje">Detalles Adicionales (Ubicación o especificaciones)</label>
+          <textarea id="mensaje" name="mensaje" rows="4" placeholder="Sector o requerimientos puntuales..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Confirmar Solicitud</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Pie de página -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Photo Booth 360. Servicios audiovisuales profesionales.</p>
+    </div>
+  </footer>
 
 </body>
 </html>

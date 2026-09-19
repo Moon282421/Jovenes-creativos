@@ -1,96 +1,518 @@
-/* Estilos Base */
+/* ==========================================================================
+   Variables y Reseteo Base
+   ========================================================================== */
+:root {
+  --color-primary: #f59e0b;
+  --color-primary-hover: #d97706;
+  --color-bg-main: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-bg-card: #182234;
+  --color-text-main: #f8fafc;
+  --color-text-muted: #94a3b8;
+  --color-border: #334155;
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+  --radius: 8px;
+  --transition: all 0.25s ease-in-out;
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 100%;
 }
 
 body {
-    background-color: #0f0f11;
-    color: #ffffff;
-    line-height: 1.6;
+  font-family: var(--font-body);
+  background-color: var(--color-bg-main);
+  color: var(--color-text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-/* Hero Section */
+/* ==========================================================================
+   Estructura Global
+   ========================================================================== */
+.container {
+  width: 90%;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.section {
+  padding: 70px 0;
+}
+
+.section-dark {
+  background-color: var(--color-bg-secondary);
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.section-title h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.section-subtitle {
+  color: var(--color-text-muted);
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  margin-top: 8px;
+}
+
+.divider {
+  width: 50px;
+  height: 3px;
+  background-color: var(--color-primary);
+  margin: 12px auto 0;
+}
+
+/* ==========================================================================
+   Botones
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 48px; /* Optimizado para pulsación táctil */
+  padding: 12px 26px;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius);
+  transition: var(--transition);
+  cursor: pointer;
+  border: 1px solid transparent;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #000;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.btn-secondary {
+  background: transparent;
+  border-color: var(--color-border);
+  color: var(--color-text-main);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  width: 100%;
+}
+
+.btn-outline:hover {
+  background: var(--color-primary);
+  color: #000;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn-sm {
+  min-height: 38px;
+  padding: 8px 18px;
+  font-size: 0.85rem;
+  background-color: var(--color-primary);
+  color: #000;
+}
+
+/* ==========================================================================
+   Navegación (Desktop & Móvil)
+   ========================================================================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  background-color: rgba(15, 23, 42, 0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 1000;
+  padding: 15px 0;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.brand-logo {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  text-decoration: none;
+}
+
+.brand-logo span {
+  color: var(--color-primary);
+}
+
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle-label {
+  display: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  background: var(--color-text-main);
+  height: 2px;
+  width: 24px;
+  position: relative;
+  transition: var(--transition);
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  content: '';
+  position: absolute;
+}
+
+.nav-toggle-label span::before {
+  bottom: 7px;
+}
+
+.nav-toggle-label span::after {
+  top: 7px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 24px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--color-primary);
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
 .hero {
-    height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    padding: 0 20px;
+  padding: 100px 0 80px;
+  text-align: center;
+  background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+}
+
+.hero-content {
+  max-width: 800px;
 }
 
 .hero h1 {
-    font-size: 3rem;
-    margin-bottom: 15px;
-    color: #00d2ff;
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.2;
+  margin-bottom: 20px;
 }
 
 .hero p {
-    font-size: 1.2rem;
-    margin-bottom: 25px;
-    color: #cccccc;
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  color: var(--color-text-muted);
+  margin-bottom: 30px;
 }
 
-.btn {
-    display: inline-block;
-    padding: 12px 30px;
-    background-color: #00d2ff;
-    color: #0f0f11;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 25px;
-    transition: background 0.3s ease;
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
-.btn:hover {
-    background-color: #0099cc;
+/* ==========================================================================
+   Grillas Informativas
+   ========================================================================== */
+.concept-grid,
+.events-grid,
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
 }
 
-/* Sección Servicios */
-.servicios {
-    padding: 60px 20px;
+.concept-card,
+.event-item {
+  background-color: var(--color-bg-card);
+  padding: 30px 22px;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+}
+
+.concept-card h3,
+.event-item h4 {
+  font-family: var(--font-heading);
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.concept-card p,
+.event-item p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   Planes y Precios
+   ========================================================================== */
+.price-card {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 35px 25px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.price-card.featured {
+  border-color: var(--color-primary);
+}
+
+.card-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-primary);
+  color: #000;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 12px;
+}
+
+.card-header h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+.card-header .price {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 20px;
+}
+
+.card-header .price span {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.card-features {
+  list-style: none;
+  margin-bottom: 30px;
+  flex-grow: 1;
+}
+
+.card-features li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.4);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.card-features li::before {
+  content: "✔ ";
+  color: var(--color-primary);
+}
+
+/* ==========================================================================
+   Formulario de Reserva
+   ========================================================================== */
+.form-container {
+  max-width: 650px;
+}
+
+.reservation-form {
+  background-color: var(--color-bg-secondary);
+  padding: 30px;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--color-text-main);
+  text-transform: uppercase;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  min-height: 46px; /* Facilita el ingreso en pantallas táctiles */
+  padding: 10px 14px;
+  background-color: var(--color-bg-main);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-text-main);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.footer {
+  padding: 25px 0;
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-bg-main);
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   Adaptabilidad para Móviles (Media Queries)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .section {
+    padding: 50px 0;
+  }
+
+  /* Menú Hamburguesa */
+  .nav-toggle-label {
+    display: block;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    padding: 20px 0;
+    gap: 15px;
+  }
+
+  .nav-links li,
+  .nav-links .btn {
+    width: 90%;
     text-align: center;
+  }
+
+  /* Despliegue del menú */
+  .nav-toggle:checked ~ .nav-menu {
+    max-height: 300px;
+  }
+
+  /* Animación del icono */
+  .nav-toggle:checked ~ .nav-toggle-label span {
+    background: transparent;
+  }
+  .nav-toggle:checked ~ .nav-toggle-label span::before {
+    transform: rotate(45deg);
+    top: 0;
+  }
+  .nav-toggle:checked ~ .nav-toggle-label span::after {
+    transform: rotate(-45deg);
+    top: 0;
+  }
+
+  /* Adaptación de Botones y Formularios */
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .reservation-form {
+    padding: 20px 15px;
+  }
 }
 
-.servicios h2 {
-    font-size: 2rem;
-    margin-bottom: 40px;
-}
-
-.cards-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.card {
-    background-color: #1f1f2e;
-    padding: 30px;
-    border-radius: 10px;
-    width: 280px;
-    border: 1px solid #33334d;
-}
-
-.card h3 {
-    margin-bottom: 15px;
-    color: #00d2ff;
-}
-
-.card p {
-    color: #aaaaaa;
-    font-size: 0.95rem;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #0a0a0c;
-    color: #666666;
-    font-size: 0.85rem;
+@media (max-width: 480px) {
+  .concept-grid,
+  .events-grid,
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
 }
