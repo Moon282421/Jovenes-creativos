@@ -549,3 +549,14 @@ textarea:focus {
   margin-bottom: 8px;
   color: var(--color-text-muted);
 }
+
+/* Efecto interactivo en tarjetas de planes */
+.price-card {
+  transition: var(--transition);
+}
+
+.price-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--color-primary);
+  box-shadow: 0 12px 28px rgba(245, 158, 11, 0.2);
+}
