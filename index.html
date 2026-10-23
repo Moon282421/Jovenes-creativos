@@ -29,6 +29,7 @@
           <li><a href="#que-es">¿Qué es?</a></li>
           <li><a href="#destinado">Eventos</a></li>
           <li><a href="#planes">Planes</a></li>
+          <li><a href="#asistente-ia">Asistente IA</a></li>
           <li><a href="#reservas" class="btn btn-sm">Reservar</a></li>
         </ul>
       </nav>
@@ -152,6 +153,39 @@
           <a href="#reservas" class="btn btn-outline">Seleccionar</a>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+<!-- Módulo 05: IA Aplicada (Recomendador y Asistente Creativo) -->
+  <section id="asistente-ia" class="section">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Asistente Inteligente 360° (IA)</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">Calcula el paquete óptimo según tu afluencia y genera ideas creativas para el marco de tu video.</p>
+      </div>
+
+      <div class="ai-box" data-aos="fade-up">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ia-invitados">Cantidad Estimada de Invitados</label>
+            <input type="number" id="ia-invitados" min="10" max="1000" placeholder="Ej. 85" required>
+          </div>
+          <div class="form-group">
+            <label for="ia-tematica">Estilo o Tipo de Celebración</label>
+            <select id="ia-tematica">
+              <option value="boda">Boda Elegante / Gala</option>
+              <option value="quince">Quinceañera / Fiesta Juvenil</option>
+              <option value="corporativo">Lanzamiento / Evento Corporativo</option>
+              <option value="cumpleanos">Cumpleaños / Graduación</option>
+            </select>
+          </div>
+        </div>
+        <button type="button" id="btn-consultar-ia" class="btn btn-primary">Generar Recomendación con IA</button>
+
+        <!-- Respuesta generada por IA -->
+        <div id="ia-resultado" class="ai-result" style="display: none;"></div>
       </div>
     </div>
   </section>
