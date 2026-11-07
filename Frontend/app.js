@@ -34,9 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// ==========================================================================
-// MÓDULO 2: Motor de IA (Recomendador de Planes + Asistente Creativo)
-// ==========================================================================
+
+// MÓDULO 2: Motor de IA Local (para Planes + Asistente )
+
 document.addEventListener('DOMContentLoaded', () => {
   const btnIA = document.getElementById('btn-consultar-ia');
   const divResultado = document.getElementById('ia-resultado');

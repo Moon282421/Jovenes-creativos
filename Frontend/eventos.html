@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eventos | PhotoBooth 360</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">PhotoBooth<span>360</span></a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle">
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Abrir menú">
+        <span></span>
+      </label>
+      <nav class="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html">¿Qué es?</a></li>
+          <li><a href="eventos.html">Eventos</a></li>
+          <li><a href="planes.html">Planes</a></li>
+          <li><a href="asistente.html">Asistente IA</a></li>
+          <li><a href="reserva.html" class="btn-reservar">Reservar</a></li>
+          <li><a href="#" id="btn-abrir-admin" class="admin-link">🔒 Admin</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="destinado" class="section">
+      <div class="container">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Ámbitos de Aplicación</h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">Versatilidad técnica adaptada a protocolos formales y activaciones comerciales.</p>
+        </div>
+        <div class="events-grid">
+          <article class="event-item" data-aos="fade-up">
+            <h4>Eventos Sociales</h4>
+            <p>Bodas, recepciones y graduaciones que exigen distinción estética y registro dinámico.</p>
+          </article>
+          <article class="event-item" data-aos="fade-up" data-aos-delay="100">
+            <h4>Celebraciones Privadas</h4>
+            <p>Cumpleaños y eventos juveniles enfocados en la difusión de contenido en redes sociales.</p>
+          </article>
+          <article class="event-item" data-aos="fade-up" data-aos-delay="200">
+            <h4>Eventos Corporativos</h4>
+            <p>Lanzamientos de producto y congresos con personalización de marca e identidad gráfica superpuesta.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Photo Booth 360. Servicios audiovisuales profesionales.</p>
+    </div>
+  </footer>
+
+  <div id="modal-admin" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+      <button type="button" id="btn-cerrar-modal" class="modal-close">&times;</button>
+      <div id="vista-login">
+        <h3>Acceso Administrativo</h3>
+        <p class="section-subtitle">Ingrese sus credenciales para gestionar las reservas en MongoDB.</p>
+        <form id="form-login" style="margin-top: 20px;">
+          <div class="form-group">
+            <label for="admin-user">Usuario</label>
+            <input type="text" id="admin-user" required placeholder="admin">
+          </div>
+          <div class="form-group">
+            <label for="admin-pass">Contraseña</label>
+            <input type="password" id="admin-pass" required placeholder="••••••">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+        </form>
+      </div>
+      <div id="vista-panel" style="display: none;">
+        <div class="panel-header">
+          <h3>Reservas en Base de Datos (MongoDB)</h3>
+          <button type="button" id="btn-logout" class="btn btn-outline btn-sm">Cerrar Sesión</button>
+        </div>
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Cliente</th>
+                <th>Contacto</th>
+                <th>Fecha Evento</th>
+                <th>Plan / Evento</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody id="tabla-reservas-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>

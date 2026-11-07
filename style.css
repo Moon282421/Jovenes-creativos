@@ -1,6 +1,4 @@
-/* ==========================================================================
-   Variables y Reseteo Base
-   ========================================================================== */
+/* Variables y Reseteo Base */
 :root {
   --color-primary: #f59e0b;
   --color-primary-hover: #d97706;
@@ -35,9 +33,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ==========================================================================
-   Estructura Global
-   ========================================================================== */
+/* Estructura Global */
 .container {
   width: 90%;
   max-width: 1140px;
@@ -77,9 +73,7 @@ body {
   margin: 12px auto 0;
 }
 
-/* ==========================================================================
-   Botones
-   ========================================================================== */
+/* Botones */
 .btn {
   display: inline-flex;
   justify-content: center;
@@ -141,9 +135,7 @@ body {
   color: #000;
 }
 
-/* ==========================================================================
-   Navegación (Desktop & Móvil)
-   ========================================================================== */
+/* Navegación (Desktop & Móvil) */
 .navbar {
   position: sticky;
   top: 0;
@@ -227,9 +219,7 @@ body {
   color: var(--color-primary);
 }
 
-/* ==========================================================================
-   Hero
-   ========================================================================== */
+/* Hero */
 .hero {
   padding: 100px 0 80px;
   text-align: center;
@@ -260,9 +250,7 @@ body {
   flex-wrap: wrap;
 }
 
-/* ==========================================================================
-   Grillas Informativas
-   ========================================================================== */
+/* Grillas Informativas */
 .concept-grid,
 .events-grid,
 .pricing-grid {
@@ -292,9 +280,7 @@ body {
   font-size: 0.95rem;
 }
 
-/* ==========================================================================
-   Planes y Precios
-   ========================================================================== */
+/* Planes y Precios */
 .price-card {
   background-color: var(--color-bg-card);
   border: 1px solid var(--color-border);
@@ -360,9 +346,7 @@ body {
   color: var(--color-primary);
 }
 
-/* ==========================================================================
-   Formulario de Reserva
-   ========================================================================== */
+/* Formulario de Reserva */
 .form-container {
   max-width: 650px;
 }
@@ -423,9 +407,7 @@ textarea:focus {
   border-color: var(--color-primary);
 }
 
-/* ==========================================================================
-   Footer
-   ========================================================================== */
+/* Footer */
 .footer {
   padding: 25px 0;
   border-top: 1px solid var(--color-border);
@@ -435,9 +417,7 @@ textarea:focus {
   color: var(--color-text-muted);
 }
 
-/* ==========================================================================
-   Adaptabilidad para Móviles (Media Queries)
-   ========================================================================== */
+/* Adaptabilidad para Móviles (Media Queries) */
 @media (max-width: 768px) {
   .section {
     padding: 50px 0;
@@ -516,9 +496,8 @@ textarea:focus {
     grid-template-columns: 1fr;
   }
 }
-/* ==========================================================================
-   Módulo Asistente IA
-   ========================================================================== */
+/* Módulo Asistente IA */
+
 .ai-box {
   max-width: 750px;
   margin: 0 auto;
