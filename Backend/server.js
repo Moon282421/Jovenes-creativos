@@ -51,3 +51,11 @@ app.get('/api/reservas', async (req, res) => {
 app.listen(3000, () => {
   console.log('Servidor Backend corriendo en http://localhost:3000');
 });
+
+const path = require('path');
+
+// Permite peticiones desde el cliente
+app.use(cors());
+
+// Servir los archivos estáticos de la carpeta Frontend
+app.use(express.static(path.join(__dirname, '../Frontend')));
