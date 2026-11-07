@@ -1,42 +1,45 @@
+const API_URL = 'http://localhost:3000';
 
-// MÓDULO 1: Registro de Reservas y Almacenamiento de Datos (LocalStorage)
+// Auto-seleccionar el plan según el parámetro enviado en la URL
+document.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const planParam = urlParams.get('plan');
+  const selectPlan = document.getElementById('plan');
 
+  if (planParam && selectPlan) {
+    selectPlan.value = planParam;
+  }
+});
+
+// MÓDULO 1: Registro de Reservas (Envío al Backend API)
 document.addEventListener('DOMContentLoaded', () => {
   const formReserva = document.querySelector('.reservation-form');
 
   if (formReserva) {
-    formReserva.addEventListener('submit', (e) => {
+    formReserva.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       // Captura de valores del formulario
       const nuevaReserva = {
-        id: Date.now(),
         nombre: document.getElementById('nombre').value.trim(),
         email: document.getElementById('email').value.trim(),
         telefono: document.getElementById('telefono').value.trim(),
         fecha: document.getElementById('fecha').value,
         tipoEvento: document.getElementById('tipo-evento').value,
         plan: document.getElementById('plan').value,
-        mensaje: document.getElementById('mensaje').value.trim(),
-        estado: 'Pendiente',
-        fechaRegistro: new Date().toLocaleDateString('es-EC')
+        mensaje: document.getElementById('mensaje').value.trim()
       };
 
-      // Guardar en Base de Datos Local (localStorage)
-      const reservasGuardadas = JSON.parse(localStorage.getItem('reservas_booth360')) || [];
-      reservasGuardadas.push(nuevaReserva);
-      localStorage.setItem('reservas_booth360', JSON.stringify(reservasGuardadas));
-
-      // Confirmación al usuario y limpieza del formulario
-      alert(`¡Gracias, ${nuevaReserva.nombre}! Su solicitud para el ${nuevaReserva.fecha} ha sido registrada correctamente.`);
-      formReserva.reset();
+      // Envío de datos al Backend
+      const exito = await enviarReserva(nuevaReserva);
+      if (exito) {
+        formReserva.reset();
+      }
     });
   }
 });
 
-
-// MÓDULO 2: Motor de IA Local (para Planes + Asistente )
-
+// MÓDULO 2: Motor de IA Local (Recomendador de Planes y Asistente Creativo)
 document.addEventListener('DOMContentLoaded', () => {
   const btnIA = document.getElementById('btn-consultar-ia');
   const divResultado = document.getElementById('ia-resultado');
@@ -51,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // 1. Lógica de Recomendación según afluencia
+      // Lógica de recomendación según afluencia
       let planSugerido = '';
       let valorSelect = '';
       let justificacion = '';
@@ -70,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         justificacion = 'Dado el alto volumen de invitados, se requieren 4 horas de cobertura continua para cubrir toda la demanda.';
       }
 
-      // 2. Asistente Creativo: Propuestas de texto (Overlay) y ambientación musical
+      // Propuestas de texto y ambientación musical
       const propuestasCreativas = {
         boda: {
           frase: '"Nuestro Amor en 360° - Edición Especial"',
@@ -92,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const idea = propuestasCreativas[tematica];
 
-      // Mostrar resultado en pantalla
+      // Renderizar resultado en pantalla
       divResultado.style.display = 'block';
       divResultado.innerHTML = `
         <h4>✨ Diagnóstico del Asistente IA:</h4>
@@ -104,11 +107,130 @@ document.addEventListener('DOMContentLoaded', () => {
         <p><strong>Dirección musical recomendada:</strong> ${idea.musica}</p>
       `;
 
-      // Preseleccionar automáticamente el plan sugerido en el formulario de reserva
+      // Preseleccionar plan en el formulario
       const selectPlan = document.getElementById('plan');
       if (selectPlan) {
         selectPlan.value = valorSelect;
       }
+    });
+  }
+});
+
+// MÓDULO 3: Petición HTTP Fetch al Backend con captura de errores
+async function enviarReserva(datosReserva) {
+  try {
+    const response = await fetch(`${API_URL}/api/reservas`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(datosReserva)
+    });
+
+    // 1. Manejo de respuestas con código de error HTTP (404, 500, etc.)
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      const mensajeError = errorData.mensaje || response.statusText;
+      throw new Error(`Código ${response.status}: ${mensajeError}`);
+    }
+
+    const respuesta = await response.json();
+    alert('✅ Reserva registrada con éxito.');
+    return true;
+
+  } catch (error) {
+    // 2. Manejo cuando el Backend está fuera de línea
+    if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
+      alert('⚠️ Error de Conexión: El servidor Backend no está activo en http://localhost:3000.');
+    } else {
+      // 3. Muestra el código de error HTTP devuelto por el servidor
+      alert(`⚠️ Error del Servidor: ${error.message}`);
+    }
+    console.error('Detalle técnico del error:', error);
+    return false;
+  }
+}
+
+// MÓDULO 4: Panel de Administración (Modal y Login)
+document.addEventListener('DOMContentLoaded', () => {
+  const btnAbrirAdmin = document.getElementById('btn-abrir-admin');
+  const modalAdmin = document.getElementById('modal-admin');
+  const btnCerrarModal = document.getElementById('btn-cerrar-modal');
+  const formLogin = document.getElementById('form-login');
+  const vistaLogin = document.getElementById('vista-login');
+  const vistaPanel = document.getElementById('vista-panel');
+  const btnLogout = document.getElementById('btn-logout');
+  const tablaBody = document.getElementById('tabla-reservas-body');
+
+  // 1. Abrir modal al hacer clic en 🔒 Admin
+  if (btnAbrirAdmin) {
+    btnAbrirAdmin.addEventListener('click', (e) => {
+      e.preventDefault();
+      modalAdmin.style.display = 'flex';
+      vistaLogin.style.display = 'block';
+      vistaPanel.style.display = 'none';
+    });
+  }
+
+  // 2. Cerrar modal
+  if (btnCerrarModal) {
+    btnCerrarModal.addEventListener('click', () => {
+      modalAdmin.style.display = 'none';
+    });
+  }
+
+  // 3. Procesar autenticación y consulta a MongoDB
+  if (formLogin) {
+    formLogin.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const user = document.getElementById('admin-user').value.trim();
+      const pass = document.getElementById('admin-pass').value.trim();
+
+      // Validación de credenciales
+      if (user === 'JEPR' && pass === '020625') { 
+        try {
+          const response = await fetch(`${API_URL}/api/reservas`);
+          if (!response.ok) throw new Error('Error en la petición.');
+
+          const reservas = await response.json();
+
+          // Renderizado dinámico de filas en la tabla
+          tablaBody.innerHTML = '';
+          if (reservas.length === 0) {
+            tablaBody.innerHTML = '<tr><td colspan="5">No hay reservas registradas.</td></tr>';
+          } else {
+            reservas.forEach(r => {
+              tablaBody.innerHTML += `
+                <tr>
+                  <td>${r.nombre}</td>
+                  <td>${r.email}<br><small>${r.telefono}</small></td>
+                  <td>${r.fecha}</td>
+                  <td>${r.plan} / ${r.tipoEvento}</td>
+                  <td><span style="color: #4ade80;">Registrado</span></td>
+                </tr>
+              `;
+            });
+          }
+
+          // Alternar vistas dentro del modal
+          vistaLogin.style.display = 'none';
+          vistaPanel.style.display = 'block';
+
+        } catch (error) {
+          alert('⚠️ Error al conectar con el servidor Backend.');
+        }
+      } else {
+        alert('❌ Usuario o contraseña incorrectos.');
+      }
+    });
+  }
+
+  // 4. Cerrar sesión dentro del panel
+  if (btnLogout) {
+    btnLogout.addEventListener('click', () => {
+      vistaPanel.style.display = 'none';
+      vistaLogin.style.display = 'block';
+      formLogin.reset();
     });
   }
 });
