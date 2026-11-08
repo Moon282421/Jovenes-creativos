@@ -1,19 +1,23 @@
-# Jovenes-creativos
-# 📸 Booth360
+# 📸 PhotoBooth 360
 
-Aplicación web interactiva desarrollada para la gestión de servicios de alquiler de cabinas de video 360°, cotización inteligente y panel de administración.
-
-## 🚀 Tecnologías y Arquitectura
-* **Frontend:** HTML5 semántico, CSS3 avanzado (Grid, Flexbox, diseño responsivo) y la librería de animaciones **AOS.js**.
-* **Backend:** Node.js y Express.js para la gestión de solicitudes y rutas API.
-* **Base de Datos:** MongoDB Atlas en la nube mediante Mongoose para el almacenamiento persistente de reservas.
-* **Módulo de IA:** Motor lógico en JavaScript para la recomendación automatizada de paquetes y generación de sugerencias creativas (overlays y musicalización).
-
-## 📊 Funcionalidades Principales
-1. **Catálogo Interactivo y Animaciones:** Secciones de servicios, ámbitos de aplicación y planes con efectos visuales dinámicos.
-2. **Formulario de Reserva:** Captura de datos en tiempo real vinculada directamente al servidor y base de datos.
-3. **Recomendador Inteligente:** Diagnóstico automático de paquetes según afluencia de invitados y temática del evento.
-4. **Panel Administrativo:** Módulo de autenticación (Login) y gestión interna para visualizar y eliminar registros de la base de datos.
+> *Plataforma web interactiva para la cotización, gestión y reserva de servicios audiovisuales 360°.*
 
 ---
-*Desarrollado para la gestión integral de eventos y activaciones visuales.*
+
+## 🌟 Sobre el Proyecto
+
+**PhotoBooth 360** es una solución digital diseñada para transformar la experiencia de contratación de servicios audiovisuales para todo tipo de eventos (bodas, quinceañeras, eventos corporativos y graduaciones). 
+
+El sitio combina una interfaz atractiva con herramientas inteligentes que orientan al usuario en la elección de su paquete ideal, facilitan la reserva directa en línea y permiten a la empresa llevar un control centralizado de sus fechas.
+
+---
+
+## 🎯 Lo que ofrece la plataforma
+
+* **Experiencia fluida para el cliente:** Conexión directa entre la revisión de precios y el agendamiento del evento.
+* **Asesoría personalizada con IA:** Orientación interactiva que analiza la escala del evento para sugerir la mejor opción y propuestas creativas.
+* **Gestión organizada:** Módulo de administración para consultar y dar seguimiento a las solicitudes en tiempo real.
+
+---
+
+*Desarrollado para elevar el impacto visual y optimizar la captura de clientes.*
